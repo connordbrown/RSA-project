@@ -47,7 +47,7 @@ encoded_text_list = Encode(n_val, e_val, message)
 ```python
 print(encoded_text_list)
 ```
-```bash
+```text
 [2483, 1120, 271, 271, 2224, 7348, 2376, 29, 2224, 2109, 271, 1124, 8271]
 ```
 
@@ -59,7 +59,7 @@ Decode the number list using Decode(), making sure to pass in the n_val and priv
 decoded_text = Decode(n_val, d_val, encoded_text_list)
 print(decoded_text)
 ```
-```bash
+```text
 Hello, World!
 ```
 
@@ -118,7 +118,7 @@ Lastly, using p, q, and the calculated private key d, decode the encrypted messa
 decoded_text = Decode(n, d, encrypted_message)
 print(decoded_text)
 ```
-```bash
+```text
 Hello, World!
 ```
 
