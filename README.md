@@ -124,7 +124,7 @@ Hello, World!
 
 After brute forcing an n value with 17 digits, I noticed that it takes a REALLY long time to brute force larger values of n, especially after n exceeds 14 digits. The p and q values are calculated fairly quickly, but the decryption is quite slow. If large values of n are used, RSA is very secure, because it takes a VERY LONG TIME to process the large numbers involved, if they can be processed at all. However, my implementation is not very secure, because it uses relatively small numbers, which can be cracked easily.
 
-## Custom Feature
+## 4. Custom Feature
 
 The following block is an example of using my custom main() function:
 
