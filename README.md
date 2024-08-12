@@ -126,7 +126,7 @@ After brute forcing an n value with 17 digits, I noticed that it takes a REALLY 
 
 ## Custom Feature
 
-The following block is an example of using my custom main() function, in case the program does not work:
+The following block is an example of using my custom main() function:
 
 ```text
 ==========================
