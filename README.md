@@ -123,3 +123,91 @@ Hello, World!
 ```
 
 After brute forcing an n value with 17 digits, I noticed that it takes a REALLY long time to brute force larger values of n, especially after n exceeds 14 digits. The p and q values are calculated fairly quickly, but the decryption is quite slow. If large values of n are used, RSA is very secure, because it takes a VERY LONG TIME to process the large numbers involved, if they can be processed at all. However, my implementation is not very secure, because it uses relatively small numbers, which can be cracked easily.
+
+**Custom Feature Demonstration:**
+
+The following block is an example of using my custom main() function, in case the program does not work:
+
+```bash
+==========================
+       RSA PROJECT        
+        CSPB 2824         
+       Connor Brown       
+     [ID: 810955868]      
+==========================
+
+Options:
+1. Get Keys
+2. Encode a Message
+3. Decode a Message
+4. Exit
+Make a selection:  1
+
+Enter first prime number 'p':  11
+Enter second prime number 'q':  331
+Your public keys (n, e) are: ((3641, 931))
+Your private key 'd' is: 1471
+
+Press ENTER to continue 
+
+==========================
+       RSA PROJECT        
+        CSPB 2824         
+       Connor Brown       
+     [ID: 810955868]      
+==========================
+
+Options:
+1. Get Keys
+2. Encode a Message
+3. Decode a Message
+4. Exit
+Make a selection: 2
+
+Enter public key 'n':  3641
+Enter public key 'e':  931
+Enter a message to encrypt, then press ENTER:  Hello, World!
+
+Ciphertext: [2756, 1630, 3221, 3221, 936, 957, 32, 1330, 936, 422, 3221, 56, 2387]
+
+Press ENTER to continue 
+
+==========================
+       RSA PROJECT        
+        CSPB 2824         
+       Connor Brown       
+     [ID: 810955868]      
+==========================
+
+Options:
+1. Get Keys
+2. Encode a Message
+3. Decode a Message
+4. Exit
+Make a selection: 3
+
+Enter public key 'n':  3641
+Enter private key'd':  1471
+Enter ciphertext as a list (e.g. [23, 14]):  [2756, 1630, 3221, 3221, 936, 957, 32, 1330, 936, 422, 3221, 56, 2387]
+
+The decoded message is:
+Hello, World!
+
+Press ENTER to continue 
+
+==========================
+       RSA PROJECT        
+        CSPB 2824         
+       Connor Brown       
+     [ID: 810955868]      
+==========================
+
+Options:
+1. Get Keys
+2. Encode a Message
+3. Decode a Message
+4. Exit
+Make a selection: 4
+
+Goodbye.
+```
