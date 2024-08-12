@@ -128,12 +128,12 @@ After brute forcing an n value with 17 digits, I noticed that it takes a REALLY 
 
 The following block is an example of using my custom main() function, in case the program does not work:
 
-```bash
+```text
 ==========================
        RSA PROJECT        
-        CSPB 2824         
+   Discrete Structures        
        Connor Brown       
-     [ID: 810955868]      
+     [ID: XXXXXXXXX]      
 ==========================
 
 Options:
@@ -152,9 +152,9 @@ Press ENTER to continue
 
 ==========================
        RSA PROJECT        
-        CSPB 2824         
+   Discrete Structures        
        Connor Brown       
-     [ID: 810955868]      
+     [ID: XXXXXXXXX]      
 ==========================
 
 Options:
@@ -174,9 +174,9 @@ Press ENTER to continue
 
 ==========================
        RSA PROJECT        
-        CSPB 2824         
+   Discrete Structures         
        Connor Brown       
-     [ID: 810955868]      
+     [ID: XXXXXXXXX]      
 ==========================
 
 Options:
@@ -197,9 +197,9 @@ Press ENTER to continue
 
 ==========================
        RSA PROJECT        
-        CSPB 2824         
+   Discrete Structures        
        Connor Brown       
-     [ID: 810955868]      
+     [ID: XXXXXXXXX]      
 ==========================
 
 Options:
