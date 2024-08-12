@@ -65,7 +65,7 @@ Hello, World!
 
 ## 2. Project Narrative
 
-My process for this project was a solid combination of techniques. A few weeks ago, I was new to RSA and the mathematical techniques and algorithms involved in its execution. For me, learning those first was my first priority. I am sometimes slow to assimilate new information, so I wasn't really sure what to plan ahead for. It's hard to plan for something that I have never done before. The Mastery Workbooks definitely helped - they gave me work to do on the project relevant to that week's curriculum and encouraged me to plan ahead as best I could. In other words, I mostly planned ahead, telling myself when I would be getting certain parts of the project done, and then "winging" the rest, because that's the nature of doing new things. I am methodical whenever possible and adaptable whenever necessary.
+My process for this project was a solid combination of techniques. A few weeks before starting it, I was new to RSA and the mathematical techniques and algorithms involved in its execution. For me, learning those first was my first priority. I am sometimes slow to assimilate new information, so I wasn't really sure what to plan ahead for. It's hard to plan for something that I have never done before. The Mastery Workbooks definitely helped - they gave me work to do on the project relevant to that week's curriculum and encouraged me to plan ahead as best I could. In other words, I mostly planned ahead, telling myself when I would be getting certain parts of the project done, and then "winging" the rest, because that's the nature of doing new things. I am methodical whenever possible and adaptable whenever necessary.
 
 It was satisfying to get encryption and decryption working. I was a little unsure of whether or not my code would work, but I tried to remember that this project is designed to facilitate success as long as you are diligent in the coursework. I was initially having some trouble encrypting and decrypting messages. I would input a message, then encrypt/decrypt it, and end up with a string of nonsense characters. I think this was because I did not initially write a Python script to keep the order of operations correct. Once I did that, making sure I was passing the correct p, q, e, and d values into my functions, I had more success. Overall, the code exchange went well. I was immediately able to decrypt other students' posts using their private keys, and then writing responses using the public ones. I always made to sure to double check that my responses were decrypting into readable messages. The repeated testing and checking was what took the most time. Sometimes the decryption would not work, and I think that was related to a bug in my Extended Euclidean Algorithm that I fixed soon after.
 
@@ -76,3 +76,50 @@ Overall, I think this project was well-designed. It used material exactly from t
 My Best Mistake was a bug in my code that caused my decryption function to periodically not work and return strings of nonsense characters. I thought I had found the issue: sometimes my d value was not the correct modular inverse of e mod phi. I was up late one night trying to figure out why, but got totally stumped. After office hours, I tried to check that e and d were relatively prime, but I was still getting junk values. Sometimes the modular inverse was correct, but still ended up giving me junk decryptions. My next thought was that the problem was inside of my Extended Euclidean Algorithm function, because that was where I was doing something different with my d value.  
 
 In order to make EEA work, I swapped the inputs so that a would always be greater than b in the equation a mod b. I made sure to swap the resulting s1 and t1 values to reflect this. I also made sure to add the initial value of a, a0 to s1 until it was positive, so that my decryption would work later. What I failed to notice was that depending on the order of the inputs, it was necessary to add either a0 OR b0 to s1. I noticed this when I printed out the linear combinations of EEA(1012, 27) and EEA(27, 1012). To fix the issue, I added a conditional to the loop for updating s1 to make it positive, ensuring that the correct amount (a0 or b0) was added. This solved the problem immediately. I was deeply frustrated by this problem for several days, so I was really happy to figure it out. Lesson learned: when swapping numbers, CHECK EVERYTHING CAREFULLY.
+
+## 3. Code Breaking
+
+Basic code breaking is done by using a brute force algorithm to factor n to get p and q values, then reverse engineering the private key d and using it to decrypt a message. The algorithm is as follows:
+
+```python
+def factorize(n):
+    # n is a number, return the smallest factor of n
+    for i in range(2, n):
+        if n % i == 0:
+            return i
+    return False
+```
+
+**How Code Breaking Works**
+
+Code breaking is pretty straightforward. First, get the public key and encrypted_message given by the writer of the code:
+
+```python
+n, e = (781, 9021)   # public key
+encrypted_message = [72, 321, 174, 174, 144, 539, 329, 604, 144, 444, 174, 221, 209]
+```
+
+Next, factor the n value to get the p and q values using the factorize() function and arithmetic:
+
+```python
+p = factorize(n)
+q = n // p
+```
+
+Using these p and q values, as well as the provided public key e, determine the private key using Find_Private_Key_d():
+
+```python
+d = Find_Private_Key_d(e, p, q)
+```
+
+Lastly, using p, q, and the calculated private key d, decode the encrypted message using Decode():
+
+```python
+decoded_text = Decode(n, d, encrypted_message)
+print(decoded_text)
+```
+```bash
+Hello, World!
+```
+
+After brute forcing an n value with 17 digits, I noticed that it takes a REALLY long time to brute force larger values of n, especially after n exceeds 14 digits. The p and q values are calculated fairly quickly, but the decryption is quite slow. If large values of n are used, RSA is very secure, because it takes a VERY LONG TIME to process the large numbers involved, if they can be processed at all. However, my implementation is not very secure, because it uses relatively small numbers, which can be cracked easily.
