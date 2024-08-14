@@ -211,3 +211,7 @@ Make a selection: 4
 
 Goodbye.
 ```
+
+## Author
+
+The application was built by Connor D. Brown in 2024.
